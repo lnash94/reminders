@@ -5,14 +5,14 @@ import ballerina/time;
 import ballerina/task;
 import ballerina/lang.runtime;
 
-string reciverEmail = "<email>";
+string reciverEmail = "";
 // Job for one time reminder
 class Job {
     *task:Job;
     int i = 1;
     public function execute() {
         self.i += 1;
-        email:SmtpClient smtpClient = checkpanic new ("smtp.email.com", "<email>", "<password>");
+        email:SmtpClient smtpClient = checkpanic new ("smtp.email.com", "", "");
         email:Message email = generateEmailContex(reciverEmail, "One time remider Email", "This is a sample email for one time remider.");
         checkpanic smtpClient->sendMessage(email);
         io:println("MyCounter: ", self.i);
@@ -40,9 +40,11 @@ public function main() {
     // This unused vaiable added for check conditional break point in line 12 (i%2==0)
     int i = 2;
 
+    io:println("Hello, Reminders!");
+
     // 1. Store sender email address in variable
-    send:sender senderEmail = "<email>";
-    email:SmtpClient|error smtpClient = new ("smtp.email.com", senderEmail, "<password>");
+    send:sender senderEmail = "";
+    email:SmtpClient|error smtpClient = new ("smtp.email.com", senderEmail, "");
 
     // 2. Store revicers email address in variable and function call
     email:Message email = generateEmailContex(reciverEmail, "Sample Email", "This is a sample email.");
@@ -71,11 +73,11 @@ public function main() {
 public function generateEmailContex(string reciver, string title, string body) returns email:Message {
     email:Message email = {
         to: [reciver],
-        cc: ["<email>"],
+        cc: [""],
         subject: title,
         body: body,
-        'from: "<email>",
-        sender: "<email>"
+        'from: "",
+        sender: ""
     };
     return email;
 }
