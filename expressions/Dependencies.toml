@@ -53,15 +53,15 @@ modules = [
 
 [[package]]
 org = "hansani"
-name = "debug_senarios_except_reminders"
+name = "expressions"
 version = "0.1.0"
 dependencies = [
 	{org = "ballerina", name = "io"},
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "hansani", packageName = "debug_senarios_except_reminders", moduleName = "debug_senarios_except_reminders"},
-	{org = "hansani", packageName = "debug_senarios_except_reminders", moduleName = "debug_senarios_except_reminders.types"}
+	{org = "hansani", packageName = "expressions", moduleName = "expressions"},
+	{org = "hansani", packageName = "expressions", moduleName = "expressions.types"}
 ]
 
 
